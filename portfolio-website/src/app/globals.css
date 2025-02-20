@@ -1,0 +1,300 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fdfbf6;
+  --foreground: #020617;
+  --accent1: #FF0080;
+  --accent2: #7928CA;
+  --accent3: #00DFD8;
+  --accent4: #FF4D4D;
+  --accent5: #F5A623;
+  --accent6: #79FFE1;
+}
+
+:root.dark {
+  --background: #020617;
+  --foreground: #ffffff;
+  --accent1: #FF1493;
+  --accent2: #9D4EDD;
+  --accent3: #00FFF5;
+  --accent4: #FF6B6B;
+  --accent5: #FFB800;
+  --accent6: #50FFE4;
+}
+
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gradient-rotate {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  overflow-x: hidden;
+}
+
+.funky-underline {
+  position: relative;
+  white-space: nowrap;
+}
+
+.funky-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 0.3em;
+  left: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10C20 5 30 15 50 10C70 5 80 15 100 10' stroke='%23FF6B6B' stroke-width='4'/%3E%3C/svg%3E");
+  background-size: 100px 20px;
+  background-repeat: repeat-x;
+  background-position: center;
+  z-index: -1;
+}
+
+.gradient-text {
+  @apply text-transparent bg-clip-text;
+  background-image: linear-gradient(
+    45deg,
+    var(--accent1),
+    var(--accent2),
+    var(--accent3),
+    var(--accent4)
+  );
+  background-size: 300% 300%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.funky-border {
+  position: relative;
+  border: 2px solid transparent;
+  background: var(--background);
+  background-clip: padding-box;
+}
+
+.funky-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(
+    45deg,
+    var(--accent1),
+    var(--accent2),
+    var(--accent3),
+    var(--accent4)
+  );
+  background-size: 300% 300%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.squiggle {
+  position: relative;
+}
+
+.squiggle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 50C30 30 70 70 90 50' stroke='%234ECDC4' stroke-width='2'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.gradient-border {
+  position: relative;
+  background: var(--background);
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background: linear-gradient(
+    var(--gradient-angle),
+    rgba(59, 130, 246, 0.5),
+    rgba(147, 51, 234, 0.5)
+  );
+  border-radius: inherit;
+  animation: gradient-rotate 5s linear infinite;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-6xl lg:text-7xl font-bold;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+  
+  p {
+    @apply font-sans text-base md:text-lg leading-relaxed;
+  }
+  
+  .gradient-text {
+    @apply font-display font-bold tracking-tight;
+  }
+  
+  code {
+    @apply font-mono;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Update the BackgroundLights color based on theme */
+.bg-white {
+  background-color: var(--light-color);
+}
+
+.glass-card {
+  @apply backdrop-blur-lg bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10;
+}
+
+/* Update cursor styles */
+@media (hover: hover) and (pointer: fine) {
+  html:has(.custom-cursor-active) * {
+    cursor: none !important;
+  }
+}
+
+/* Show default cursor on touch devices */
+@media (hover: none), (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+  
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+/* Custom cursor interactions */
+.hover-target {
+  position: relative;
+  z-index: 1;
+}
+
+/* Add these new styles */
+.cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+  will-change: width, height, transform, border;
+  z-index: 999;
+  background: transparent;
+}
+
+.cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+  will-change: width, height, transform;
+  z-index: 999;
+}
+
+/* Update text styles */
+.hero-text {
+  @apply font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight;
+}
+
+.section-title {
+  @apply font-display text-3xl md:text-4xl font-bold tracking-tight;
+}
+
+.nav-text {
+  @apply font-sans text-sm uppercase tracking-superwide;
+}
+
+.body-text {
+  @apply font-sans text-base md:text-lg leading-relaxed;
+}
+
+/* Add these to your existing styles */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.photo-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  aspect-ratio: 1;
+}
+
+.photo-item img {
+  transition: transform 0.5s ease;
+}
+
+.photo-item:hover img {
+  transform: scale(1.1);
+}
+
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.7),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photo-item:hover .photo-overlay {
+  opacity: 1;
+}
