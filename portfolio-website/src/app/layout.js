@@ -23,8 +23,8 @@ const orbitron = Orbitron({
 });
 
 export const metadata = {
-  title: "Your Name | Portfolio",
-  description: "Portfolio website showcasing my work and experience",
+  title: "Mihir Jain | Portfolio",
+  description: "Portfolio website showcasing my work in software development, featuring projects in web development, iOS development, and more.",
 };
 
 export default function RootLayout({ children }) {
