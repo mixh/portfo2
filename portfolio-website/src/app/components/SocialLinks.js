@@ -8,7 +8,7 @@ export default function SocialLinks() {
     <div className="flex items-center gap-4">
       <MagneticButton>
         <a 
-          href="mailto:your.email@example.com"
+          href="mailto:mihirxjain@gmail.com"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-accent1 to-accent4 text-white font-medium hover:opacity-90 transition-opacity"
         >
           <svg
@@ -26,7 +26,7 @@ export default function SocialLinks() {
 
       <MagneticButton>
         <Link
-          href="https://github.com/yourusername"
+          href="https://github.com/mixh"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center w-12 h-12 rounded-full funky-border"
@@ -44,7 +44,7 @@ export default function SocialLinks() {
       
       <MagneticButton>
         <Link
-          href="https://linkedin.com/in/yourusername"
+          href="https://linkedin.com/in/mihirx1"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center w-12 h-12 rounded-full funky-border"

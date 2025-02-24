@@ -120,6 +120,7 @@ export default function ExperienceSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
+          id="skills"
         >
           <h2 className="section-title mb-8">Technical Skills</h2>
           <div className="grid md:grid-cols-2 gap-6">

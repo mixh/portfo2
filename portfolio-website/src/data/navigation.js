@@ -4,7 +4,7 @@ export const navigation = {
       title: 'Projects',
       items: [
         { name: 'Featured Work', href: '/#projects' },
-        { name: 'View All', href: '/projects' },
+        { name: 'All Projects', href: '/projects' },
       ],
     },
     {

@@ -115,11 +115,20 @@ export const experience = {
       "Spring Boot",
       "RESTful APIs"
     ],
+    "mobile": [
+      "Swift",
+      "SwiftUI",
+      "iOS Development",
+      "Core Data",
+      "UIKit",
+      "App Store Connect"
+    ],
     databases: [
       "MongoDB",
       "PostgreSQL",
       "Redis",
-      "MySQL"
+      "MySQL",
+      "Core Data"
     ],
     "AI/ML": [
       "TensorFlow",
@@ -134,6 +143,7 @@ export const experience = {
       "AWS",
       "Linux",
       "VS Code",
+      "Xcode",
       "Postman"
     ]
   }

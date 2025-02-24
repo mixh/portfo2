@@ -8,6 +8,13 @@ import { useState } from 'react';
 export default function ProjectCard({ project, index }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = project.images || (project.image ? [project.image] : []);
+  
+  // Check if the project is a mobile app (contains 'iOS' or 'mobile' in title or technologies)
+  const isMobileApp = project.title.toLowerCase().includes('ios') || 
+                     project.technologies.some(tech => 
+                       tech.toLowerCase().includes('swift') || 
+                       tech.toLowerCase().includes('mobile')
+                     );
 
   return (
     <motion.div
@@ -18,13 +25,17 @@ export default function ProjectCard({ project, index }) {
       className="bg-foreground/5 rounded-lg overflow-hidden hover:bg-foreground/10 transition-colors"
     >
       {images.length > 0 && (
-        <div className="relative h-48 w-full group">
+        <div className={`relative ${isMobileApp ? 'h-80' : 'h-48'} w-full group`}>
           <div className="relative h-full w-full overflow-hidden">
             <Image
               src={images[currentImageIndex]}
               alt={`${project.title} screenshot ${currentImageIndex + 1}`}
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className={`object-contain ${!isMobileApp && 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
+              style={{
+                padding: isMobileApp ? '1rem' : '0',
+                background: isMobileApp ? 'rgba(0,0,0,0.05)' : 'transparent'
+              }}
             />
             
             {/* Image Navigation Dots */}

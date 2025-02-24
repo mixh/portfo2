@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { projects } from '@/data/projects';
 import ProjectCard from './ProjectCard';
 
@@ -26,6 +27,29 @@ export default function ProjectsSection() {
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mt-12"
+        >
+          <Link href="/projects">
+            <motion.button
+              className="funky-border px-8 py-4 rounded-full text-lg font-medium relative overflow-hidden group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="relative z-10 gradient-text">View All Projects</span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-accent1/10 via-accent2/10 to-accent3/10"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: '100%' }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+              />
+            </motion.button>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
