@@ -47,7 +47,7 @@ export const projects = [
       "/images/projects/portfo/6.png",
     ],
     github: "https://github.com/mixh/portfolio-blog-website",
-    liveDemo: "/",
+    liveDemo: "https://www.mxjain.com",
     featured: true,
     date: "2023-08-25"
   },
