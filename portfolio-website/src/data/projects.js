@@ -10,7 +10,7 @@ export const projects = [
       "/images/projects/zipdate/3.png",
       "/images/projects/zipdate/4.png"
     ],
-    github: "https://github.com/mixh/zipdate",
+    github: "https://github.com/mixh/ZipDating",
     liveDemo: "https://zipdate-22ce74903b8d.herokuapp.com/",
     featured: false,
     date: "2023-06-10"
